@@ -1,4 +1,4 @@
-## 📄 Laravel 10 PDF Generation with DomPDF Example
+## 📄 Laravel 10 PDF Generation with DomPDF
 
 This project demonstrates how to generate PDFs in Laravel 10 using the Barryvdh/DomPDF package. It allows you to create downloadable PDF documents from data stored in your database, such as books, reports, invoices, or any data-based document.
 
