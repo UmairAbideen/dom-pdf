@@ -32,10 +32,12 @@ php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
 This will create a config/dompdf.php file, where you can customize DomPDF settings such as paper size, font, and margins.
  
 
-``` bash
-3. Create Book Model & Migration
-Generate the Book model and migration file:
 
+3. Create Book Model & Migration
+
+   
+Generate the Book model and migration file:
+``` bash
 php artisan make:model Book -m
 Define the necessary fields in the migration file for the Book model. For example: 
 
@@ -53,25 +55,23 @@ public function up()
     });
 }
 ```
-``` bash
+
 4. Run Migration to Create Books Table
+
+   
 After creating the migration, run the following command to create the books table in your database:
-php artisan migrate
-
-```
 ``` bash
-5. Create Controller for Handling PDF Generation
-Generate a new controller for the Book model:
+php artisan migrate
+```
 
-bash
-Copy
-Edit
+5. Create Controller for Handling PDF Generation
+
+
+Generate a new controller for the Book model:
+``` bash
 php artisan make:controller BookController
 In the BookController, add a method to handle the PDF generation:
 
-php
-Copy
-Edit
 use App\Models\Book;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -83,14 +83,16 @@ public function generatePDF()
     $pdf = PDF::loadView('books.pdf', compact('books'));
 
     // Download the PDF file
-    return $pdf->download('books_list.pdf');
+    return $pdf->stream('books_list.pdf');
 }
+``` 
+
 6. Create Blade View for PDF Layout
+
+
 Create a Blade view resources/views/books/pdf.blade.php for rendering the books data into a table format:
 
-php
-Copy
-Edit
+``` bash
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,27 +139,20 @@ Edit
     </table>
 </body>
 </html>
+```
+
 7. Set Up Route for PDF Generation
+
+
 Define a route in routes/web.php to trigger the PDF generation:
 
-php
-Copy
-Edit
+``` bash
 Route::get('/generate-pdf', [BookController::class, 'generatePDF'])->name('generate.pdf');
+``` 
+
 8. Test PDF Generation
+
+
 Now, you can test the PDF generation by visiting the route in your browser:
-
-text
-Copy
-Edit
 http://your-app.test/generate-pdf
-This will generate and download a PDF file containing the list of books.
-
-💡 Tips and Troubleshooting
-
-Ensure that you have installed all necessary dependencies using composer install.
-
-If you face any issues with PDF rendering, check the config/dompdf.php file for paper size and font settings.
-
-You can also customize the PDF appearance by adjusting the Blade view or adding CSS styling.
-
+This will generate a PDF file containing the list of books.
