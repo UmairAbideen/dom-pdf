@@ -13,18 +13,20 @@ This project demonstrates how to generate PDFs in Laravel 10 using the Barryvdh/
 ## 📝 Step-by-Step Guide
 
 1. Install DomPDF Package
-``` bash
 To install the Barryvdh/DomPDF package in your Laravel 10 project, run the following command:
-composer require barryvdh/laravel-dompdf
-This will install the package and add it to your composer.json file.
-```
-
 ``` bash
+composer require barryvdh/laravel-dompdf
+```
+This will install the package and add it to your composer.json file.
+
+
 2. Publish the Configuration (Optional)
 You can publish the package's configuration file (optional, but useful if you want to customize PDF settings):
+``` bash
 php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+```
 This will create a config/dompdf.php file, where you can customize DomPDF settings such as paper size, font, and margins.
-``` 
+ 
 
 ``` bash
 3. Create Book Model & Migration
